@@ -1,0 +1,6 @@
+<div id="subsite-footer" tal:define="is_subsite viewlet/is_subsite" tal:condition="is_subsite">
+<div class="container" tal:define="footer_text viewlet/get_footer_text" tal:condition="footer_text">
+    <div class="row" tal:content="structure footer_text/output|nothing">
+    </div>
+</div>
+</div>
