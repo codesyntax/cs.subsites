@@ -1,0 +1,16 @@
+.mainsiteviewlet{
+    background-color:#666;
+    padding:5px;
+}
+.mainsiteviewlet img{
+    height:20px;
+    width:auto;
+
+}
+#subsite-footer{
+    background-color:#666 !important;
+    border-top:2px solid black;
+    padding:5px;
+    text-align:center;
+    color:white;
+}

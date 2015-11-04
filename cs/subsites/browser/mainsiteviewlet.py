@@ -12,6 +12,7 @@ class MainSiteViewlet(grok.Viewlet):
     grok.context(Interface)
     grok.require('zope2.View')
     grok.name('cs.subsite.mainsite')
+    grok.order(1)
     grok.viewletmanager(IPortalHeader)
 
     def is_subsite(self):
