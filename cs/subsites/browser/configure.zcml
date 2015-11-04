@@ -6,5 +6,8 @@
     i18n_domain="cs.subsites">
 
   <!-- -*- extra stuff goes here -*- -->
-
+  <browser:resourceDirectory
+      name="cs.subsites"
+      directory="resources"
+      />
 </configure>
