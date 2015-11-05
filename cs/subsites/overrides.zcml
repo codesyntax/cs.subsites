@@ -11,4 +11,11 @@
         permission="zope2.View"
         />
 
+    <!-- Menu for translations on content -->
+    <browser:menu
+        id="plone_contentmenu_multilingual"
+        title="Translate menu - contains translation-related actions"
+        class=".browser.multilingualmenu.TranslateMenu"
+        />
+
 </configure>

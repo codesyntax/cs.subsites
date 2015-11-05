@@ -11,7 +11,7 @@ from plone.multilingualbehavior.interfaces import ILanguageIndependentField
 from plone.app.layout.navigation.interfaces import INavigationRoot
 
 # Interface class; used to define content-type schema.
-class ISubSite(form.Schema, IImageScaleTraversable):
+class ISubSite(form.Schema, IImageScaleTraversable, INavigationRoot):
     """
     SubSite creator element
     """
@@ -52,7 +52,7 @@ alsoProvides(ISubSite['specific_css'], ILanguageIndependentField)
 
 
 class SubSite(dexterity.Container):
-    grok.implements(ISubSite, INavigationRoot)
+    grok.implements(ISubSite)
     # Add your class methods and properties here
 
 
