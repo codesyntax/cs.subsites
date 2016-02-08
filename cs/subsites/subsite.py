@@ -1,3 +1,6 @@
+from Products.CMFCore.utils import getToolByName
+from plone.app.contentlisting.interfaces import IContentListing
+from plone.multilingual.interfaces import ITranslationManager
 from five import grok
 from plone.app.textfield import RichText
 from plone.directives import dexterity
@@ -5,11 +8,14 @@ from plone.directives import form
 from plone.namedfile.field import NamedBlobImage
 from plone.namedfile.interfaces import IImageScaleTraversable
 from zope import schema
+from Acquisition import aq_inner
 from cs.subsites import MessageFactory as _
 from zope.interface import alsoProvides
 from collective import dexteritytextindexer
 from plone.multilingualbehavior.interfaces import ILanguageIndependentField
 from plone.app.layout.navigation.interfaces import INavigationRoot
+from plone.memoize.view import memoize
+
 
 # Interface class; used to define content-type schema.
 class ISubSite(form.Schema, IImageScaleTraversable, INavigationRoot):
@@ -73,3 +79,60 @@ class SubSiteView(grok.View):
     grok.context(ISubSite)
     grok.require('zope2.View')
     grok.name('view')
+
+    @memoize
+    def carousel_items(self):
+        context = aq_inner(self.context)
+        home_sections_folder = getattr(context, 'portadako-destakatuak', None)
+        if home_sections_folder:
+            items = home_sections_folder.carousel.getFolderContents({'portal_type':'Featured','review_state' : 'published'})
+            return IContentListing(items)
+        else:
+            return []
+
+    @memoize
+    def carousel_items_len(self):
+        items = self.carousel_items()
+        return len(items) > 1
+
+    @memoize
+    def news(self):
+        context = aq_inner(self.context)
+        pcat = getToolByName(context, 'portal_catalog')
+        articles_dict = dict(portal_type='News Item',
+                        review_state='published',
+                        sort_on='effective',
+                        sort_order='reverse',
+                        sort_limit=3)
+        articles_folder = self.articles_folder_element()
+        if articles_folder:
+            path = '/'.join(articles_folder.getPhysicalPath())
+            articles_dict['path'] = path
+        else:
+            return None
+        articles = pcat(articles_dict)
+        if articles:
+            return articles
+        else:
+            return None
+
+    @memoize
+    def articles_folder_element(self):
+        context = aq_inner(self.context)
+        lang = self.request.LANGUAGE
+        context_eu = ITranslationManager(context).get_translation('eu')
+        eu_articles_folder = context_eu.get('albisteak', None)
+        if eu_articles_folder:
+            articles_folder = ITranslationManager(eu_articles_folder).get_translation(lang)
+            if articles_folder:
+                return articles_folder
+        None
+
+    @memoize
+    def articles_folder_element_path(self):
+        context = aq_inner(self.context)
+        articles_folder = self.articles_folder_element()
+        if articles_folder:
+            return articles_folder.absolute_url()
+        else:
+            return context.absolute_url()

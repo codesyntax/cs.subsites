@@ -1,26 +1,123 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      lang="en"
-      metal:use-macro="context/main_template/macros/master"
+      metal:use-macro="here/main_template/macros/master"
       i18n:domain="cs.subsites">
+
 <body>
+  <metal:block fill-slot="top_slot"
+                 tal:define="disable_column_one python:request.set('disable_plone.leftcolumn',1)"/>
+<metal:content-core fill-slot="main">
 
-<tal:comment tal:condition="nothing">
-    This is a sample view template. It will not be used for rendering the
-    content unless activated by creation of a view class with a matching name.
-</tal:comment>
+    <div id="main-content" class="row">
+      <div id="HomeCarousel" class="carousel slide col-md-12" data-ride="carousel"
+          tal:condition="view/carousel_items">
 
-<metal:main fill-slot="content-core">
-  <metal:content-core define-macro="content-core">
+          <div class="carousel-inner">
+            <div class="item"
+                  tal:attributes="class python:repeat['image'].index == 0 and 'item active' or 'item'"
+                  tal:repeat="image view/carousel_items">
+               <tal:defineimg tal:define="image_obj image/getObject">
+               <tal:definelink define="link image_obj/link">
+                 <a href="" tal:attributes="href image_obj/link">
+                   <img tal:define="scales image_obj/@@images;
+                                          thumbnail python: scales.scale('image');"
+                              tal:condition="nocall:thumbnail"
+                              tal:replace="structure thumbnail/tag" />
+                 </a>
+               </tal:definelink>
+                <div class="carousel-caption">
 
-  <div id="subsite-text" tal:content="structure context/text/output|nothing">
-  </div>
+                    <h3>
+                      <a tal:attributes="href image/link" tal:content="image/Title">
+                          Title
+                      </a>
+                    </h3>
+                      <p tal:content="image_obj/Description">
+                      Description
+                      </p>
 
-  </metal:content-core>
-</metal:main>
+                </div>
+              </tal:defineimg>
+            </div>
+          </div>
 
+          <tal:condition condition="view/carousel_items_len">
+                <a class="carousel-control left" href="#HomeCarousel" data-slide="prev">&lsaquo;</a>
+                <a class="carousel-control right" href="#HomeCarousel" data-slide="next">&rsaquo;</a>
+                  <ul class="carousel-indicators">
+                                          <tal:repeat tal:repeat="image view/carousel_items">
+                                          <li tal:attributes="data-slide-to python:repeat['image'].index;data-target string:#HomeCarousel;
+                                                                                class python:repeat['image'].index==0 and 'active' or None">
+
+
+
+                                        </li>
+                                          </tal:repeat>
+
+                  </ul>
+          </tal:condition>
+
+      </div>
+    </div>
+
+    <div id="news-features" class="row" tal:define="news view/news">
+
+                <tal:repeat repeat="item news">
+                      <div tal:define="obj python:item.getObject();">
+                          <div class="tileItem visualIEFloatFix">
+                              <h3 class="tileHeadline">
+                                  <a href="#"
+                                     class="summary url"
+                                     tal:attributes="href item/getURL"
+                                     tal:content="item/Title">
+                                      Item Title
+                                  </a>
+                              </h3>
+                              <div class="documentByLine">
+
+                                  <span class="documentPublished">
+                                      <tal:replace replace="python:context.toLocalizedTime(obj.EffectiveDate())"></tal:replace>
+                                  </span>
+
+
+                                </div>
+
+                                <ul tal:define="categories obj/Subject|nothing" class="category" tal:condition="categories">
+                                    <li tal:repeat="category categories">
+                                      <a tal:content="category" tal:attributes="href string:${view/articles_folder_element_path}/tag/${category}"></a>
+                                    </li>
+                                </ul>
+                                <a href="#"
+                               class="newsImageContainer"
+                                  tal:attributes="href item/getURL">
+
+
+                                 <img src="" alt=""
+                                       tal:condition="nocall:obj/image|nothing"
+                                       tal:define="scale obj/@@images"
+                                       tal:replace="structure python: scale.scale('image', scale='mini').tag(css_class='tileImage')" />
+
+                                <img src="" alt=""
+                                     tal:condition="not:obj/image|nothing"
+                                     tal:attributes="src string:${item/getURL}/new_no_image.gif" />
+
+                                  </a>
+                                <p class="documentDescription" tal:define="description obj/Description" tal:condition="description"
+                                    tal:content="description">
+                                </p>
+
+
+
+                          </div>
+                        </div>
+                </tal:repeat>
+                <a class="more-link" tal:define="articles_folder_element view/articles_folder_element"
+                   tal:condition="articles_folder_element"
+                   i18n:translate=""
+                  tal:attributes="href view/articles_folder_element_path">Albiste gehiago</a>
+    </div>
+</metal:content-core>
 </body>
 </html>
-
