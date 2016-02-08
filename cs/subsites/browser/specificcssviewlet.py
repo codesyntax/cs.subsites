@@ -1,18 +1,11 @@
+from plone.app.layout.viewlets.common import ViewletBase
 from cs.subsites.subsite import ISubSite
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from Acquisition import aq_parent
-from zope.interface import Interface
-from five import grok
 from Acquisition import aq_inner
-from plone.app.layout.viewlets.interfaces import IHtmlHeadLinks
-grok.templatedir('templates')
 
 
-class SpecificCss(grok.Viewlet):
-    grok.context(Interface)
-    grok.require('zope2.View')
-    grok.name('cs.subsites.specificcss')
-    grok.viewletmanager(IHtmlHeadLinks)
+class SpecificCss(ViewletBase):
 
     def subsite_element(self):
         context = aq_inner(self.context)

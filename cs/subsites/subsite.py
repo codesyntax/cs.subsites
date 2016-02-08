@@ -1,7 +1,7 @@
+from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from plone.app.contentlisting.interfaces import IContentListing
 from plone.multilingual.interfaces import ITranslationManager
-from five import grok
 from plone.app.textfield import RichText
 from plone.directives import dexterity
 from plone.directives import form
@@ -15,6 +15,7 @@ from collective import dexteritytextindexer
 from plone.multilingualbehavior.interfaces import ILanguageIndependentField
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.memoize.view import memoize
+from zope.interface import implements
 
 
 # Interface class; used to define content-type schema.
@@ -60,7 +61,7 @@ alsoProvides(ISubSite['specific_css'], ILanguageIndependentField)
 
 
 class SubSite(dexterity.Container):
-    grok.implements(ISubSite)
+    implements(ISubSite)
     # Add your class methods and properties here
 
 
@@ -72,13 +73,7 @@ class SubSite(dexterity.Container):
 # interface with "/@@view" appended unless specified otherwise
 # using grok.name below.
 # This will make this view the default view for your content-type
-grok.templatedir('templates')
-
-
-class SubSiteView(grok.View):
-    grok.context(ISubSite)
-    grok.require('zope2.View')
-    grok.name('view')
+class SubSiteView(BrowserView):
 
     @memoize
     def carousel_items(self):

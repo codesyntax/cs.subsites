@@ -2,8 +2,8 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-    xmlns:grok="http://namespaces.zope.org/grok"
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="cs.subsites">
 
@@ -12,9 +12,6 @@
 
   <include file="permissions.zcml" />
   <include package=".browser" />
-
-  <!-- Grok the package to initialise schema interfaces and content classes -->
-  <grok:grok package="." />
 
   <i18n:registerTranslations directory="locales" />
 
@@ -29,5 +26,12 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
+  <browser:page
+      for=".subsite.ISubSite"
+      name="view"
+      class=".subsite.SubSiteView"
+      template="templates/subsiteview.pt"
+      permission="zope.Public"
+    />
 
 </configure>

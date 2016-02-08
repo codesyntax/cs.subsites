@@ -1,5 +1,5 @@
-<tal:condition tal:define="is_subsite viewlet/is_subsite" tal:condition="is_subsite">
-<div id="subsite-footer" tal:define="footer_text viewlet/get_footer_text" tal:condition="footer_text">
+<tal:condition tal:define="is_subsite view/is_subsite" tal:condition="is_subsite">
+<div id="subsite-footer" tal:define="footer_text view/get_footer_text" tal:condition="footer_text">
 <div class="container">
     <div tal:replace="structure footer_text/output|nothing">
     </div>

@@ -26,7 +26,6 @@ setup(name='cs.subsites',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'five.grok',
           'plone.app.dexterity [grok, relations]',
           'plone.namedfile [blobs]',
           'plone.app.multilingual',

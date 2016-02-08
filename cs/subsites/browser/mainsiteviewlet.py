@@ -1,18 +1,14 @@
 from cs.subsites.subsite import ISubSite
+from five import grok
+from plone.app.layout.viewlets.common import ViewletBase
+
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from Acquisition import aq_parent
 from Acquisition import aq_inner
-from zope.interface import Interface
-from five import grok
-from plone.app.layout.viewlets.interfaces import IPortalHeader
 grok.templatedir('templates')
 
 
-class MainSiteViewlet(grok.Viewlet):
-    grok.context(Interface)
-    grok.require('zope2.View')
-    grok.name('cs.subsite.mainsite')
-    grok.viewletmanager(IPortalHeader)
+class MainSiteViewlet(ViewletBase):
 
     def is_subsite(self):
         context = aq_inner(self.context)

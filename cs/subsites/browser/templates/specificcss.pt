@@ -1,2 +1,2 @@
 <link media="screen" rel="stylesheet" type="text/css"
-            tal:condition="viewlet/is_subsite" tal:attributes="href string:${viewlet/subsite_url}/specificcss.css" />
+            tal:condition="view/is_subsite" tal:attributes="href string:${view/subsite_url}/specificcss.css" />
