@@ -29,8 +29,8 @@ setup(name='cs.subsites',
           'plone.app.dexterity [grok, relations]',
           'plone.namedfile [blobs]',
           'plone.app.multilingual',
-          'plone.multilingualbehavior',
-          'collective.dexteritytextindexer'
+          'collective.dexteritytextindexer',
+          'cs.dxfeatured'
           # -*- Extra requirements: -*-
       ],
       entry_points="""

@@ -32,7 +32,7 @@ class MainSiteViewlet(ViewletBase):
         if bprops is not None:
             logoName = bprops.logoName
         else:
-            logoName = 'logo.jpg'
+            logoName = 'logo.png'
 
         logoTitle = portal_state.portal_title()
         return portal.restrictedTraverse(logoName).tag(title=logoTitle, alt=logoTitle)

@@ -62,7 +62,7 @@
       </div>
     </div>
 
-    <div id="news-features" class="row" tal:define="news view/news">
+    <div id="news-features" class="row" tal:define="news view/news" tal:condition="news">
 
                 <tal:repeat repeat="item news">
                       <div tal:define="obj python:item.getObject();">

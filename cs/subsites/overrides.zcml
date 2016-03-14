@@ -12,10 +12,10 @@
         />
 
     <!-- Menu for translations on content -->
-    <browser:menu
+    <!-- <browser:menu
         id="plone_contentmenu_multilingual"
         title="Translate menu - contains translation-related actions"
         class=".browser.multilingualmenu.TranslateMenu"
-        />
+        /> -->
 
 </configure>

@@ -1,7 +1,7 @@
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from plone.app.contentlisting.interfaces import IContentListing
-from plone.multilingual.interfaces import ITranslationManager
+from plone.app.multilingual.interfaces import ITranslationManager
 from plone.app.textfield import RichText
 from plone.directives import dexterity
 from plone.directives import form
@@ -12,7 +12,7 @@ from Acquisition import aq_inner
 from cs.subsites import MessageFactory as _
 from zope.interface import alsoProvides
 from collective import dexteritytextindexer
-from plone.multilingualbehavior.interfaces import ILanguageIndependentField
+from plone.app.multilingual.dx.interfaces import ILanguageIndependentField
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.memoize.view import memoize
 from zope.interface import implements
@@ -115,13 +115,19 @@ class SubSiteView(BrowserView):
     def articles_folder_element(self):
         context = aq_inner(self.context)
         lang = self.request.LANGUAGE
-        context_eu = ITranslationManager(context).get_translation('eu')
-        eu_articles_folder = context_eu.get('albisteak', None)
-        if eu_articles_folder:
-            articles_folder = ITranslationManager(eu_articles_folder).get_translation(lang)
-            if articles_folder:
-                return articles_folder
-        None
+        try:
+            context_eu = ITranslationManager(context).get_translation('eu')
+            if not context_eu:
+                eu_articles_folder = context.get('albisteak', None)
+            else:
+                eu_articles_folder = context_eu.get('albisteak', None)
+            if eu_articles_folder:
+                articles_folder = ITranslationManager(eu_articles_folder).get_translation(lang)
+                if articles_folder:
+                    return articles_folder
+            return None
+        except:
+            return None
 
     @memoize
     def articles_folder_element_path(self):
