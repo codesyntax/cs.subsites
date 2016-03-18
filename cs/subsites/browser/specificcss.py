@@ -9,7 +9,7 @@ class SpecificCss(BrowserView):
 
     def __call__(self):
         context = aq_inner(self.context)
-        self.response.setHeader('Content-Type', 'text/css;charset=utf-8')
+        self.request.response.setHeader('Content-Type', 'text/css;charset=utf-8')
         while not INavigationRoot.providedBy(context):
             context = aq_parent(context)
 

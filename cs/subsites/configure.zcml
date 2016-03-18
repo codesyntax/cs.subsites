@@ -29,7 +29,6 @@
   <browser:page
       for=".subsite.ISubSite"
       name="view"
-      class=".subsite.SubSiteView"
       template="templates/subsiteview.pt"
       permission="zope.Public"
     />
