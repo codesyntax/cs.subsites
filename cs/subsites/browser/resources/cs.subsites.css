@@ -32,11 +32,17 @@ color: #413d75;
 /*********orokorrak***********************/
 body {
     font-family: 'Open Sans', sans-serif;
+    color: #666;
 
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
     font-family: 'Open Sans Condensed', sans-serif;
+    color: #333;
+}
+
+h1{
+    margin: 0;
 }
 
 /***********Goiko headerra*********************/
@@ -70,7 +76,7 @@ body {
     margin: 3em 28em 3em 0;
 }
 
-/*****mrnu nagusia************/
+/*****menu nagusia************/
 
 .navbar-default {
     background-color: #110c52;
@@ -95,6 +101,7 @@ body {
 .navbar-default .navbar-nav > .active > a:hover, 
 .navbar-nav > li > a:hover {
     background-color: #413d75 !important;
+    color: #fff;
 }
 
 .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li.activedropdown > a {
@@ -107,7 +114,9 @@ body {
     font-size: 16px;
 }
 
-
+.dropdown-menu > li > a {
+    padding: 10px 20px;
+}
 /****video********/
 
 .video-container, #video {
@@ -137,10 +146,27 @@ body {
 
 
 /*edukia*******/
+
 #content {
     border-top: 0;
 }
 
+.description {
+    font-size: 150%;
+    margin: 1em 0;
+}
+.newsImageContainer {
+    margin: 2em 0;
+}
+
+.documentByLine {
+    color: #999;
+}
+
+.section-egunean .tileItem {
+    height: 400px;
+    margin-top: 1em;
+}
 
 #news-videos h2, .hurrengo_ekitaldiak h2 {
     font-size: 46px;
@@ -150,6 +176,10 @@ body {
     text-transform: none;
     margin:0;
     line-height: 75%;
+}
+
+#news-videos  {
+   margin-bottom: 2em;
 }
 
 #news-videos h3 {
@@ -167,8 +197,9 @@ body {
     float: none;
     font-weight: 200;
     font-size: 16px;
-    color: #333;
-    margin: 3px 0;
+    color: #999;
+    margin: 5px 0;
+    display: block;
 }
 
 .portletWrapper {
@@ -187,6 +218,12 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#585486', endColorstr='#7a779e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     color: #fff;
     margin: 2em 0 0 0;
+    padding: 10px;
+    text-transform: none;
+}
+
+dl.portlet dd.portletItem p {
+    margin: 0 0 0px;
 }
 
 .portletStaticText p{
@@ -196,6 +233,7 @@ body {
 
 .portletStaticText p:first-child{
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 
@@ -211,8 +249,9 @@ body {
     padding-left: 0;
 }
 
-.tileItem .documentDescription{
-    font-size: 90%;
+.content-container .description{
+    font-size: 120%;
+    font-family: georgia !important;
 }
 
 .image-shadow::before {
@@ -227,6 +266,11 @@ body {
     z-index: 15;
 }
 
+.newsImageContainer img{
+width: 100%;
+height: auto;
+}
+
 
 .ekitaldia{
     background: #eaeaea;
@@ -237,23 +281,47 @@ body {
 
 .ekitaldia .date{
     background: #fff;
-   margin-top: -30px;
+   margin-top: -16px;
    border: 0;
    font-size: 800;
-    color: #413d75;
+    color: #999;
     width: 40%; 
     box-shadow: none;
     margin-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
 }
 
-.ekitaldia h3{
-   margin: 0 0 5px 0;
-   font-size: 18px;
+.ekitaldia p.mota{
+    text-transform: uppercase;
+    margin:0;
+    font-family: "Open Sans",sans-serif;
+    font-size: 90%;
+    color: #333;
 }
 
-#content .portletWrapper p {
-    font-family: 'Open Sans', sans-serif;
-    
+.ekitaldia h3, .ekitaldia h2{
+   margin: 5px 0 5px 0;
+   font-size: 20px;
+}
+
+
+.portaltype-ekitaldia .newsImageContainer {
+    margin: 0 0 2em 0;
+}
+
+.event dt {
+   
+    font-size: 80%;
+    font-weight: 700;
+    margin-right: 10px;
+    padding-top: 5px;
+    text-transform: uppercase;
+    color: #413d75;
+}
+
+#content .portletWrapper .portletStaticText p {
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .ekitaldia .description{
@@ -298,6 +366,11 @@ body {
   padding-top: 20px;
 }
 
+.section-egunean #content ul.share {
+    border-top: 0;
+   
+}
+
 .section-egunean #content .col-sm-8 .documentFirstHeading{
   border-top: 0;
   padding-top: 20px;
@@ -310,4 +383,15 @@ body {
    text-transform: uppercase;
    border-bottom: 0;
    padding-bottom: 0.5em;
+}
+
+.share img {
+   border:0;
+}
+
+
+/******albistea********************/
+
+.portaltype-news-item .documentByLine .documentPublished{
+    font-size: 26px;
 }
