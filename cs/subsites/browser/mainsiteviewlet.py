@@ -24,15 +24,7 @@ class MainSiteViewlet(ViewletBase):
         portal = portal_state.portal()
         return portal.absolute_url()
 
-    def get_logo(self):
+    def mainsite_title(self):
         context = aq_inner(self.context)
         portal_state = context.restrictedTraverse("plone_portal_state")
-        portal = portal_state.portal()
-        bprops = portal.restrictedTraverse('base_properties', None)
-        if bprops is not None:
-            logoName = bprops.logoName
-        else:
-            logoName = 'logo.png'
-
-        logoTitle = portal_state.portal_title()
-        return portal.restrictedTraverse(logoName).tag(title=logoTitle, alt=logoTitle)
+        return portal_state.portal_title()

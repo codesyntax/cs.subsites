@@ -1,7 +1,7 @@
 <tal:condition tal:define="is_subsite view/is_subsite" tal:condition="is_subsite">
 <div class="mainsiteviewlet">
         <a tal:attributes="href view/mainsite_url">
-        <img tal:replace="structure view/get_logo"/>
+        <img tal:attributes="src string:${view/mainsite_url}/@@site-logo/logo.png"/>
         </a>
 </div>
 </tal:condition>
