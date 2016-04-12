@@ -29,6 +29,8 @@ color: #413d75;
 
 ***********/
 
+
+
 /*********orokorrak***********************/
 body {
     font-family: 'Open Sans', sans-serif;
@@ -348,7 +350,7 @@ dl.portlet dd.portletItem p {
 }
 
 .image-shadow::before {
-    background: rgba(0, 0, 0, 0) url("arrow.png") no-repeat scroll right top / 100% auto !important;
+    background: none !important;
     content: "";
     float: left;
     height: 100%;
@@ -360,8 +362,8 @@ dl.portlet dd.portletItem p {
 }
 
 .newsImageContainer img{
-width: 100%;
-height: auto;
+    width: 100%;
+    height: auto;
 }
 
 
@@ -370,6 +372,10 @@ height: auto;
     padding: 1em;
     margin-top: 2em;
     text-transform: none;
+
+}
+
+.template-ekitaldiak_view .ekitaldia{
     min-height: 350px;
 }
 
