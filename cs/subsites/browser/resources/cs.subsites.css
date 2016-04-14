@@ -308,6 +308,7 @@ dl.portlet ul.navTreeLevel4 .navTreeCurrentItem {
     line-height: 75%;
 }
 
+
 #news-videos  {
    margin-bottom: 2em;
 }
@@ -424,7 +425,7 @@ dl.portlet dd.portletItem p {
    margin-top: -16px;
    border: 0;
    font-size: 800;
-    color: #999;
+    color: #413d75;
     width: 50%; 
     box-shadow: none;
     margin-bottom: 10px;
