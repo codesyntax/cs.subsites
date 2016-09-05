@@ -22,7 +22,7 @@ class LogoViewlet(LogoViewletPlone):
         if ISubSite.providedBy(context):
             logoTitle = context.Title()
             if context.restrictedTraverse('@@images').scale('image', 'large'):
-                self.logo_tag = context.restrictedTraverse('@@images').scale('image', 'large').tag()
+                self.logo_tag = context.restrictedTraverse('@@images').scale('image').tag()
                 self.navigation_root_title = context.Title()
             else:
                 logoTitle = self.portal_state.portal_title()
