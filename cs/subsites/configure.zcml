@@ -31,7 +31,7 @@
       name="view"
       class=".subsite.SubSiteView"
       template="templates/subsiteview.pt"
-      permission="zope.Public"
+      permission="zope.View"
     />
 
 </configure>
