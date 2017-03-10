@@ -78,12 +78,13 @@ class SubSiteView(BrowserView):
     @memoize
     def carousel_items(self):
         context = aq_inner(self.context)
-        home_sections_folder = getattr(context, 'portadako-destakatuak', None)
+        home_sections_folder = context.get('portadako-destakatuak', None)
         if home_sections_folder:
-            items = home_sections_folder.carousel.getFolderContents({'portal_type':'Featured','review_state' : 'published'})
-            return IContentListing(items)
-        else:
-            return []
+            carousel_folder = home_sections_folder.get('carousel', None)
+            if carousel_folder:
+                items = carousel_folder.getFolderContents({'portal_type':'Featured','review_state' : 'published'})
+                return IContentListing(items)
+        return []
 
     @memoize
     def carousel_items_len(self):
