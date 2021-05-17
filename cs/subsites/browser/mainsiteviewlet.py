@@ -1,11 +1,9 @@
 from cs.subsites.subsite import ISubSite
-from five import grok
 from plone.app.layout.viewlets.common import ViewletBase
 
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from Acquisition import aq_parent
 from Acquisition import aq_inner
-grok.templatedir('templates')
 
 
 class MainSiteViewlet(ViewletBase):
