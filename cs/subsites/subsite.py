@@ -3,8 +3,8 @@ from Products.CMFCore.utils import getToolByName
 from plone.app.contentlisting.interfaces import IContentListing
 from plone.app.multilingual.interfaces import ITranslationManager
 from plone.app.textfield import RichText
-from plone.directives import dexterity
-from plone.directives import form
+from plone.dexterity.content import Container
+from plone.supermodel import model
 from plone.namedfile.field import NamedBlobImage
 from plone.namedfile.interfaces import IImageScaleTraversable
 from zope import schema
@@ -15,11 +15,11 @@ from collective import dexteritytextindexer
 from plone.app.multilingual.dx.interfaces import ILanguageIndependentField
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.memoize.view import memoize
-from zope.interface import implements
+from zope.interface import implementer
 
 
 # Interface class; used to define content-type schema.
-class ISubSite(form.Schema, IImageScaleTraversable, INavigationRoot):
+class ISubSite(model.Schema, IImageScaleTraversable, INavigationRoot):
     """
     SubSite creator element
     """
@@ -60,8 +60,10 @@ alsoProvides(ISubSite['specific_css'], ILanguageIndependentField)
 # in separate view classes.
 
 
-class SubSite(dexterity.Container):
-    implements(ISubSite)
+@implementer(ISubSite)
+class SubSite(Container):
+    """
+    """
     # Add your class methods and properties here
 
 
