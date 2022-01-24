@@ -25,6 +25,15 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="cs.subsites (uninstall)"
+      directory="profiles/uninstall"
+      description="Uninstalls the cs.subsites add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.uninstall"
+      />
+
   <!-- -*- extra stuff goes here -*- -->
   <browser:page
       for=".subsite.ISubSite"
