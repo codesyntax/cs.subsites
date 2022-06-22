@@ -27,7 +27,7 @@ setup(name='cs.subsites',
       install_requires=[
           'setuptools',
           'plone.app.dexterity [relations]',
-          'plone.namedfile [blobs]',
+          'plone.namedfile',
           'plone.app.multilingual',
           'collective.dexteritytextindexer',
           'cs.dxfeatured'
