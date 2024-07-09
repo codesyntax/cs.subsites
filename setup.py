@@ -29,7 +29,6 @@ setup(name='cs.subsites',
           'plone.app.dexterity [relations]',
           'plone.namedfile',
           'plone.app.multilingual',
-          'collective.dexteritytextindexer',
           'cs.dxfeatured'
           # -*- Extra requirements: -*-
       ],

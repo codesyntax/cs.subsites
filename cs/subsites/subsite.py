@@ -11,7 +11,6 @@ from zope import schema
 from Acquisition import aq_inner
 from cs.subsites import MessageFactory as _
 from zope.interface import alsoProvides
-from collective import dexteritytextindexer
 from plone.app.multilingual.dx.interfaces import ILanguageIndependentField
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.memoize.view import memoize
@@ -33,8 +32,6 @@ class ISubSite(model.Schema, IImageScaleTraversable, INavigationRoot):
             description=u"",
             required=False,
         )
-
-    dexteritytextindexer.searchable('text')
     text = RichText(title=_(u'Subsite homepage text'),
         description=_(u'This text will be shown in the subsite homepage'),
         required=False,
