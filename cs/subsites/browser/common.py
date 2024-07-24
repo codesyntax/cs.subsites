@@ -23,9 +23,13 @@ class LogoViewlet(LogoViewletPlone):
             if context.restrictedTraverse('@@images').scale('image'):
                 self.img_src = context.restrictedTraverse('@@images').scale('image').url
                 self.navigation_root_title = context.Title()
+                self.logo_title = context.Title()
+
             else:
                 logoTitle = self.portal_state.portal_title()
                 self.navigation_root_title = context.Title()
+                self.logo_title = context.Title()
+
 
         else:
             logoTitle = self.portal_state.portal_title()
