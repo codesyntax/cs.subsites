@@ -27,7 +27,7 @@
     <element value="plone.app.versioningbehavior.behaviors.IVersionable" />
     <element value="plone.app.contenttypes.behaviors.tableofcontents.ITableOfContents"/>
     <element value="plone.app.dexterity.behaviors.nextprevious.INextPreviousToggle"/>
-    <element value="plone.app.multilingual.dx.interfaces.IDexterityTranslatable" />
+    <element value="plone.translatable" />
    </property>
 
   <!-- View information -->
