@@ -1,11 +1,12 @@
+from Acquisition import aq_inner, aq_parent
 from plone.app.layout.globals.layout import IBodyClassAdapter
-from plone.dexterity.interfaces import IDexterityContent
 from plone.app.layout.navigation.interfaces import INavigationRoot
-from cs.subsites.subsite import ISubSite
+from plone.dexterity.interfaces import IDexterityContent
 from zope.component import adapter
-from zope.interface import implementer
-from zope.interface import Interface
-from Acquisition import aq_inner
+from zope.interface import Interface, implementer
+
+from cs.subsites.subsite import ISubSite
+
 
 @adapter(IDexterityContent, Interface)
 @implementer(IBodyClassAdapter)
