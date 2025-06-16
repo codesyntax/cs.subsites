@@ -51,4 +51,6 @@
       permission="zope.Public"
     />
 
+  <adapter factory=".bodyclass.ContentBodyClasses" />
+
 </configure>
