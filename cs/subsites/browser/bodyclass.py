@@ -5,7 +5,7 @@ from cs.subsites.subsite import ISubSite
 from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
-from Acquisition import aq_inner
+from Acquisition import aq_inner, aq_parent
 
 @adapter(IDexterityContent, Interface)
 @implementer(IBodyClassAdapter)
