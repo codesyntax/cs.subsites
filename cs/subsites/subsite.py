@@ -15,6 +15,7 @@ from plone.app.multilingual.dx.interfaces import ILanguageIndependentField
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.memoize.view import memoize
 from zope.interface import implementer
+from plone import api
 
 
 # Interface class; used to define content-type schema.
@@ -80,7 +81,13 @@ class SubSiteView(BrowserView):
         if home_sections_folder:
             carousel_folder = home_sections_folder.get('carousel', None)
             if carousel_folder:
-                items = carousel_folder.getFolderContents({'portal_type':'Featured','review_state' : 'published'})
+                items = api.content.find(
+                    context=carousel_folder,
+                    portal_type="Featured",
+                    review_state="published",
+                    sort_on="getObjPositionInParent",
+                    depth=1
+                )
                 return IContentListing(items)
         return []
 
