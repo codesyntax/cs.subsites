@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0'
+version = "1.0"
 
 setup(
     name="cs.subsites",
@@ -18,9 +18,9 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     keywords="",
-    author="",
-    author_email="",
-    url="http://svn.plone.org/svn/collective/",
+    author="CodeSyntax",
+    author_email="plone@codesyntax.com",
+    url="https://github.com/codesyntax/cs.subsites",
     license="GPL",
     packages=find_packages("src", exclude=["ez_setup"]),
     package_dir={"": "src"},
@@ -29,7 +29,7 @@ setup(
     zip_safe=False,
     install_requires=[
         "setuptools",
-        "plone.app.dexterity [relations]",
+        "plone.app.dexterity",
         "plone.namedfile",
         "plone.app.multilingual",
         "cs.dxfeatured",
@@ -40,9 +40,4 @@ setup(
       [z3c.autoinclude.plugin]
       target = plone
       """,
-    # The next two lines may be deleted after you no longer need
-    # addcontent support from paster and before you distribute
-    # your package.
-    setup_requires=["PasteScript"],
-    paster_plugins=["ZopeSkel"],
 )
