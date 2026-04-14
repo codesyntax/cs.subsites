@@ -14,13 +14,10 @@ def cache_key(fun, self):
 
 class IsSubsite(BrowserView):
 
-    #@ram.cache(cache_key)
+    # @ram.cache(cache_key)
     def __call__(self):
         context = aq_inner(self.context)
         while not INavigationRoot.providedBy(context):
             context = aq_parent(context)
 
-        if ISubSite.providedBy(context):
-            return True
-        else:
-            return False
+        return ISubSite.providedBy(context)
