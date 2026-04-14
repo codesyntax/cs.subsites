@@ -13,6 +13,7 @@
       class=".footer.Footer"
       template="templates/footer.pt"
       permission="zope2.View"
+      layer="..interfaces.ICSSubsitesLayer"
       />
 
   <browser:viewlet
@@ -22,6 +23,7 @@
       class=".mainsiteviewlet.MainSiteViewlet"
       template="templates/mainsiteviewlet.pt"
       permission="zope2.View"
+      layer="..interfaces.ICSSubsitesLayer"
       />
 
   <browser:viewlet
@@ -31,6 +33,7 @@
       class=".specificcssviewlet.SpecificCss"
       template="templates/specificcss.pt"
       permission="zope2.View"
+      layer="..interfaces.ICSSubsitesLayer"
       />
 
   <browser:page
@@ -38,6 +41,7 @@
       for="*"
       class=".issubsite.IsSubsite"
       permission="zope.Public"
+      layer="..interfaces.ICSSubsitesLayer"
       />
 
   <browser:page
@@ -45,6 +49,7 @@
       for="*"
       class=".specificcss.SpecificCss"
       permission="zope.Public"
+      layer="..interfaces.ICSSubsitesLayer"
       />
 
   <adapter

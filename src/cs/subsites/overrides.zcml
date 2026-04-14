@@ -1,21 +1,19 @@
-<configure xmlns="http://namespaces.zope.org/zope"
-           xmlns:zcml="http://namespaces.zope.org/zcml"
-           xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-           xmlns:browser="http://namespaces.zope.org/browser"
-           i18n_domain="plone">
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="cs.subsites"
+    >
 
-    <browser:viewlet
-        name="plone.logo"
-        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
-        class=".browser.common.LogoViewlet"
-        permission="zope2.View"
-        />
+  <browser:viewlet
+      name="plone.logo"
+      manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+      class=".browser.common.LogoViewlet"
+      permission="zope2.View"
+      layer="..interfaces.ICSSubsitesLayer"
+      />
 
-    <!-- Menu for translations on content -->
-    <!-- <browser:menu
-        id="plone_contentmenu_multilingual"
-        title="Translate menu - contains translation-related actions"
-        class=".browser.multilingualmenu.TranslateMenu"
-        /> -->
+
 
 </configure>
