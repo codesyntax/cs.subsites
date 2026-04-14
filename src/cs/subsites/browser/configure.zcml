@@ -2,7 +2,8 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:i18n="http://namespaces.zope.org/i18n"
-    i18n_domain="cs.subsites">
+    i18n_domain="cs.subsites"
+    >
 
   <!-- -*- extra stuff goes here -*- -->
   <browser:resourceDirectory
@@ -11,46 +12,49 @@
       />
 
   <browser:viewlet
-    for="*"
-    class=".footer.Footer"
-    manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
-    permission="zope2.View"
-    name="cs.subsite.footer"
-    template="templates/footer.pt"
-  />
-
-   <browser:viewlet
-    for="*"
-    class=".mainsiteviewlet.MainSiteViewlet"
-    manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
-    permission="zope2.View"
-    name="cs.subsite.mainsite"
-    template="templates/mainsiteviewlet.pt"
-  />
+      name="cs.subsite.footer"
+      for="*"
+      manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+      class=".footer.Footer"
+      template="templates/footer.pt"
+      permission="zope2.View"
+      />
 
   <browser:viewlet
-    for="*"
-    class=".specificcssviewlet.SpecificCss"
-    manager="plone.app.layout.viewlets.interfaces.IHtmlHeadLinks"
-    permission="zope2.View"
-    name="cs.subsites.specificcss"
-    template="templates/specificcss.pt"
-  />
+      name="cs.subsite.mainsite"
+      for="*"
+      manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+      class=".mainsiteviewlet.MainSiteViewlet"
+      template="templates/mainsiteviewlet.pt"
+      permission="zope2.View"
+      />
+
+  <browser:viewlet
+      name="cs.subsites.specificcss"
+      for="*"
+      manager="plone.app.layout.viewlets.interfaces.IHtmlHeadLinks"
+      class=".specificcssviewlet.SpecificCss"
+      template="templates/specificcss.pt"
+      permission="zope2.View"
+      />
 
   <browser:page
-      for="*"
       name="issubsite"
+      for="*"
       class=".issubsite.IsSubsite"
       permission="zope.Public"
-    />
+      />
 
   <browser:page
-      for="*"
       name="specificcss.css"
+      for="*"
       class=".specificcss.SpecificCss"
       permission="zope.Public"
-    />
+      />
 
-  <adapter factory=".bodyclass.ContentBodyClasses" />
+  <adapter
+      factory=".bodyclass.ContentBodyClasses"
+      name="subsite-bodyclasses"
+      />
 
 </configure>
