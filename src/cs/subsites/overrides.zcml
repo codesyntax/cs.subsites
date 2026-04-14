@@ -11,7 +11,7 @@
       manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
       class=".browser.common.LogoViewlet"
       permission="zope2.View"
-      layer="..interfaces.ICSSubsitesLayer"
+      layer=".interfaces.ICSSubsitesLayer"
       />
 
 
