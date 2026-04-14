@@ -6,11 +6,6 @@
     >
 
   <!-- -*- extra stuff goes here -*- -->
-  <browser:resourceDirectory
-      name="cs.subsites"
-      directory="resources"
-      />
-
   <browser:viewlet
       name="cs.subsite.footer"
       for="*"
