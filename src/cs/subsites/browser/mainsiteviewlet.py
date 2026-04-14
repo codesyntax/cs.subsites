@@ -12,9 +12,7 @@ class MainSiteViewlet(ViewletBase):
         context = aq_inner(self.context)
         while not INavigationRoot.providedBy(context):
             context = aq_parent(context)
-        if ISubSite.providedBy(context):
-            return True
-        return False
+        return ISubSite.providedBy(context)
 
     def mainsite_url(self):
         context = aq_inner(self.context)
