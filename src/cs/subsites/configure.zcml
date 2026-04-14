@@ -18,8 +18,8 @@
        in Plone -->
   <genericsetup:registerProfile
       name="default"
-      title="cs.subsites: Content-types"
-      description="Content-types for cs.subsites. Subsites Creator"
+      title="cs.subsites: Subsites for Plone sites"
+      description="cs.subsites: Subsites Creator"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       directory="profiles/default"
       />
