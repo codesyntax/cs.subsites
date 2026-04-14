@@ -32,7 +32,6 @@ setup(
         "plone.app.dexterity",
         "plone.namedfile",
         "plone.app.multilingual",
-        "cs.dxfeatured",
         # -*- Extra requirements: -*-
     ],
     entry_points="""
