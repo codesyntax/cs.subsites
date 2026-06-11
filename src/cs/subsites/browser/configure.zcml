@@ -66,5 +66,16 @@
       layer="..interfaces.ICSSubsitesLayer"
       />
 
+  <!-- Language Switcher -->
+  <browser:view
+      name="language-switcher"
+      for="cs.subsites.subsite.ISubSite"
+      class="plone.app.multilingual.browser.switcher.LanguageSwitcher"
+      permission="zope.Public"
+      layer="..interfaces.ICSSubsitesLayer"
+      menu="plone_displayviews"
+      title="Root language switcher"
+      />
+
 
 </configure>

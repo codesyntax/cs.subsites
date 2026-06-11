@@ -33,7 +33,7 @@ setup(
         "plone.namedfile",
         "plone.app.multilingual",
         "collective.lineage",
-        "collective.registry",
+        "lineage.registry",
         # -*- Extra requirements: -*-
     ],
     entry_points="""
