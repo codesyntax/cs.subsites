@@ -32,6 +32,8 @@ setup(
         "plone.app.dexterity",
         "plone.namedfile",
         "plone.app.multilingual",
+        "collective.lineage",
+        "collective.registry",
         # -*- Extra requirements: -*-
     ],
     entry_points="""

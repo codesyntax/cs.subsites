@@ -16,10 +16,11 @@ from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.memoize.view import memoize
 from zope.interface import implementer
 from plone import api
+from collective.lineage.interfaces import IChildSite
 
 
 # Interface class; used to define content-type schema.
-class ISubSite(model.Schema, IImageScaleTraversable, INavigationRoot):
+class ISubSite(model.Schema, IImageScaleTraversable, INavigationRoot, IChildSite):
     """
     SubSite creator element
     """
@@ -51,6 +52,18 @@ class ISubSite(model.Schema, IImageScaleTraversable, INavigationRoot):
         title=_("Specific css for this SubSiteq"),
         description=_("This css is just for this subsite"),
         required=False,
+    )
+
+    allow_custom_set_of_languages = schema.Bool(
+        title=_(
+            "Allow configuring a custom set of languages?",
+        ),
+        description=_(
+            "This is useful to create URLs like http://portal/subsite/en, instead of the traditional http://portal/en/subsite"
+        ),
+        required=False,
+        default=False,
+        readonly=False,
     )
 
 

@@ -56,4 +56,10 @@
     url_expr="string:${object_url}/edit" visible="True">
     <permission value="Modify portal content" />
   </action>
+ <action title="Language Settings" action_id="subsite-language-settings"
+    category="object" condition_expr="context/allow_custom_set_of_languages|nothing" icon_expr="string:translate"
+    link_target="" url_expr="string:${object_url}/@@language-controlpanel"
+    visible="True">
+  <permission value="Plone Site Setup: Language"/>
+ </action>
 </object>
