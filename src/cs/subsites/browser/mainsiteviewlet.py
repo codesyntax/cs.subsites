@@ -4,6 +4,7 @@ from plone.app.layout.viewlets.common import ViewletBase
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from Acquisition import aq_parent
 from Acquisition import aq_inner
+from Products.CMFPlone.utils import getSiteLogo
 
 
 class MainSiteViewlet(ViewletBase):
@@ -24,3 +25,6 @@ class MainSiteViewlet(ViewletBase):
         context = aq_inner(self.context)
         portal_state = context.restrictedTraverse("plone_portal_state")
         return portal_state.portal_title()
+
+    def mainsite_logo(self):
+        return getSiteLogo()
